@@ -83,7 +83,7 @@
     <groupId>org.jahia.modules</groupId>
     <artifactId>addstuff</artifactId>
     <name>addStuff</name>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <description>This is the custom module (addStuff) for running on a Digital Factory server.</description>
 
