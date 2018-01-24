@@ -6,8 +6,7 @@
         <property name="applyOnConfigurations" value="page"/>
         <property name="skipOnConfiguration" value="include,wrapper"/>
         <property name="applyOnModes" value="live,preview"/>
-        <!--  If you want to be able to set the HTML as last element of the HEAD, set the priority to -1 (before StaticAssetsFilter)-->
-        <property name="priority" value="20"/>
+        <property name="priority" value="-1"/>
     </bean>
 </beans>
 

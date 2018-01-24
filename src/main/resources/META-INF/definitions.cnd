@@ -3,6 +3,8 @@
 [jmix:addStuff] mixin
  extends = jnt:virtualsite
  itemtype = options
+ - addStuffHeadTop (string,textarea) nofulltext
  - addStuffHead (string,textarea) nofulltext
+ - addStuffBodyTop (string,textarea) nofulltext
  - addStuffBody (string,textarea) nofulltext
 
