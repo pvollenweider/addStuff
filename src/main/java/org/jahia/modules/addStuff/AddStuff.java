@@ -26,7 +26,7 @@ public class AddStuff extends AbstractFilter implements ApplicationListener<Appl
         String addStuffHead = renderContext.getSite().hasProperty("addStuffHead") ? renderContext.getSite().getProperty("addStuffHead").getString() : null;
         String addStuffBodyTop = renderContext.getSite().hasProperty("addStuffBodyTop") ? renderContext.getSite().getProperty("addStuffBodyTop").getString() : null;
         String addStuffBody = renderContext.getSite().hasProperty("addStuffBody") ? renderContext.getSite().getProperty("addStuffBody").getString() : null;
-        if (StringUtils.isNotEmpty(addStuffHead) || StringUtils.isNotEmpty(addStuffBodyTop) || StringUtils.isNotEmpty(addStuffBody)) {
+        if (StringUtils.isNotEmpty(addStuffHeadTop) || StringUtils.isNotEmpty(addStuffHead) || StringUtils.isNotEmpty(addStuffBodyTop) || StringUtils.isNotEmpty(addStuffBody)) {
             Source source = new Source(previousOut);
             OutputDocument outputDocument = new OutputDocument(source);
             if (StringUtils.isNotBlank(addStuffHeadTop)) {
