@@ -1,7 +1,7 @@
 <jmix = 'http://www.jahia.org/jahia/mix/1.0'>
 
 [jmix:addStuff] mixin
- extends = jnt:virtualsite
+ extends = jnt:virtualsite,jnt:page
  itemtype = options
  - addStuffHeadTop (string,textarea) nofulltext
  - addStuffHead (string,textarea) nofulltext
