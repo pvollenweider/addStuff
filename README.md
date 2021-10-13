@@ -9,26 +9,62 @@ Please read the dedicated tutorial on https://academy.jahia.com/training-kb/tuto
 
 The idea of this module is to allow any editor to inject some code in the HEAD or the BODY part of a page, without doing anything to your template set or any existing modules.
 As an example, you can add a JavaScript snippet on the bottom of the BODY, or some CSS inline style in the HEAD section.
-You can do it using two different ways, the global (site) way or the single page way.
 
-### The global (site) way
-
-You will choose the **global way** if you need to **inject some code on all pages of your site**.
-On Edit mode, on the left panel, you need to right-click on your site node and choose the edit action.
-Then, under the `option` part, you will need to enable the `Add stuff in your HTML code (only for preview/live mode)`. Once it’s done, you will see 4 new properties:
+There is 4 different placeholders to inject your code:
 
 - Top of the HEAD
 - End of the HEAD
 - Top of the BODY
 - End of the BODY
 
+In term of HTML, here are the different placeholders:
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Top of the HEAD -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello, world!</title>
+
+    <!-- Some CSS or JavaScript comming from the template:addResource tag -->
+    <link href="/modules/anyModule/css/mystyle.css" rel="stylesheet">
+    <script src="/modules/anyModule/jacasvript/my.js"></script>
+
+    <!-- End of the HEAD -->
+  </head>
+  <body>
+     <!-- Top of the BODY -->
+     <h1>Hello, world!</h1>
+     <p>Some content here...</p>
+
+     
+     <!-- End of the BODY -->
+  </body>
+</html>
+```
+
+You can do it using two different ways, the global (site) way or the single page way.
+
+### The global (site) way
+
+You will choose the **global way** if you need to **inject some code on all pages of your site**.
+
+On Edit mode, on the left panel, you need to right-click on your site node and choose the `edit` action.
+
+Then, under the `option` part, you will need to enable the `Add stuff in your HTML code (only for preview/live mode)`. Once it’s done, you will see the 4 placeholders.
+
 You can insert your code in the chosen part, then save it.
-As the site node is an auto-published node, you don’t need to start a public workflow. You may only flush your cache from the administration if needed.
+
+As the site node is an auto-published node, you don’t need to start a public workflow. 
 
 ### The page way
 
-If you need to inject some code **only on a single page**, you can edit your page node from the left panel and enable the `Add stuff in your HTML code (only for preview/live mode)` in the `option` part. Once it’s done, you will see the 4 same properties. You can insert your code in the chosen part, then save it.
-You can preview this page to see the result (the code is only injected in preview or live mode), and you can start a publication workflow to replicate this update on the live mode.
+If you need to inject some code **only on a single page**, you can edit your page node from the left panel and enable the `Add stuff in your HTML code (only for preview/live mode)` in the `option` part. Once it’s done, you will see the 4 placeholders. You can insert your code in the chosen part, then save it.
+
+On the page way, you can preview this page to see the result (the code is only injected in preview or live mode), and you will need to start a publication workflow to view the result on live mode.
 
 ## Examples
 
