@@ -49,7 +49,7 @@ public class AddStuff extends AbstractFilter implements ApplicationListener<Appl
                         for (Element element : headElementList) {
                             final StartTag headStartTag = element.getStartTag();
                             outputDocument.replace(headStartTag.getBegin() + headStartTag.toString().indexOf(">"), headStartTag.getBegin() + headStartTag.toString().indexOf(">") + 1,
-                                    ">\n" + AggregateCacheFilter.removeEsiTags(addStuffHeadTop) + "\n");
+                                    ">\n" + AggregateCacheFilter.removeCacheTags(addStuffHeadTop) + "\n");
                             break; // avoid to loop if for any reasons multiple body in the page
                         }
                     }
@@ -58,7 +58,7 @@ public class AddStuff extends AbstractFilter implements ApplicationListener<Appl
                         for (Element element : headElementList) {
                             final EndTag headEndTag = element.getEndTag();
                             outputDocument.replace(headEndTag.getBegin(), headEndTag.getBegin() + 1,
-                                    "\n" + AggregateCacheFilter.removeEsiTags(addStuffHead) + "\n<");
+                                    "\n" + AggregateCacheFilter.removeCacheTags(addStuffHead) + "\n<");
                             break; // avoid to loop if for any reasons multiple body in the page
                         }
                     }
@@ -67,7 +67,7 @@ public class AddStuff extends AbstractFilter implements ApplicationListener<Appl
                         for (Element element : bodyElementList) {
                             final StartTag bodyStartTag = element.getStartTag();
                             outputDocument.replace(bodyStartTag.getBegin() + bodyStartTag.toString().indexOf(">"), bodyStartTag.getBegin() + bodyStartTag.toString().indexOf(">") + 1,
-                                    ">\n" + AggregateCacheFilter.removeEsiTags(addStuffBodyTop) + "\n");
+                                    ">\n" + AggregateCacheFilter.removeCacheTags(addStuffBodyTop) + "\n");
                             break; // avoid to loop if for any reasons multiple body in the page
                         }
                     }
@@ -75,7 +75,7 @@ public class AddStuff extends AbstractFilter implements ApplicationListener<Appl
                         List<Element> bodyElementList = source.getAllElements(HTMLElementName.BODY);
                         for (Element element : bodyElementList) {
                             final EndTag bodyEndTag = element.getEndTag();
-                            outputDocument.replace(bodyEndTag.getBegin(), bodyEndTag.getBegin() + 1, "\n" + AggregateCacheFilter.removeEsiTags(addStuffBody) + "\n<");
+                            outputDocument.replace(bodyEndTag.getBegin(), bodyEndTag.getBegin() + 1, "\n" + AggregateCacheFilter.removeCacheTags(addStuffBody) + "\n<");
                             break; // avoid to loop if for any reasons multiple body in the page
                         }
                     }
