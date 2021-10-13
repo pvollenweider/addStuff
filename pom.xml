@@ -22,12 +22,12 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
     <parent>
         <artifactId>jahia-modules</artifactId>
         <groupId>org.jahia.modules</groupId>
-        <version>8.0.0.0</version>
+        <version>7.1.2.0</version>
     </parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>addstuff</artifactId>
     <name>addStuff</name>
-    <version>2.0.2-SNAPSHOT</version>
+    <version>1.5.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <description>This is the custom module (addStuff) for running on a Digital Factory server.</description>
 
@@ -37,8 +37,6 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
       <tag>HEAD</tag>
   </scm>
     <properties>
-        <jahia-module-signature>MCwCFEPek7YGL0U6sdwnIFmkOIYsyfoPAhRf1BCRwX0dvcuO5A/95vbC4IFN8A==</jahia-module-signature>
-        <require-capability>osgi.extender;filter:="(osgi.extender=org.jahia.bundles.blueprint.extender.config)"</require-capability>
         <jahia-depends>default,templates-system</jahia-depends>
     </properties>
 
