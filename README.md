@@ -31,7 +31,7 @@ In term of HTML, here are the different placeholders:
 
     <!-- Some CSS or JavaScript comming from the template:addResource tag -->
     <link href="/modules/anyModule/css/mystyle.css" rel="stylesheet">
-    <script src="/modules/anyModule/jacasvript/my.js"></script>
+    <script src="/modules/anyModule/javascript/my.js"></script>
 
     <!-- End of the HEAD -->
   </head>
