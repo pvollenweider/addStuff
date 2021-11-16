@@ -37,7 +37,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
       <tag>HEAD</tag>
   </scm>
     <properties>
-        <jahia-depends>default,templates-system</jahia-depends>
+        <jahia-depends>default</jahia-depends>
     </properties>
 
     <repositories>
