@@ -27,14 +27,14 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
     <groupId>org.jahia.modules</groupId>
     <artifactId>addstuff</artifactId>
     <name>addStuff</name>
-    <version>2.1.1-SNAPSHOT</version>
+    <version>2.1.1</version>
     <packaging>bundle</packaging>
     <description>This is the custom module (addStuff) for running on a Jahia server.</description>
 
     <scm>
         <connection>scm:git:git@github.com:pvollenweider/addStuff.git</connection>
         <developerConnection>scm:git:git@github.com:pvollenweider/addStuff.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>addstuff-2.1.1</tag>
   </scm>
     <properties>
         <jahia-module-signature>MCwCFGXOks6SuAYl6LohHrCZyo8iHdnEAhQePlQp1rqUXelhkof7Z+BfuZwQyA==</jahia-module-signature>
