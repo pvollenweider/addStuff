@@ -56,6 +56,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
     <properties>
         <jahia-module-signature>MC0CFQCDZKU6y8Ab3BzzD4GVjSuC5Z/lMwIUKTQVQDBkGwj5DkSrp8elD3EVgQs=</jahia-module-signature>
         <jahia-depends>default,siteSettings</jahia-depends>
+        <require-capability>osgi.extender;filter:="(osgi.extender=org.jahia.bundles.blueprint.extender.config)"</require-capability>
     </properties>
 
     <repositories>
