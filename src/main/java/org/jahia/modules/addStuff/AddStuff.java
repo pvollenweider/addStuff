@@ -13,12 +13,23 @@ import org.jahia.services.render.Resource;
 import org.jahia.services.render.filter.AbstractFilter;
 import org.jahia.services.render.filter.RenderChain;
 import org.jahia.services.render.filter.cache.AggregateCacheFilter;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
 import org.slf4j.*;
 import org.slf4j.Logger;
 
+@Component(service = AbstractFilter.class, immediate = true)
 public class AddStuff extends AbstractFilter {
 
     private static Logger logger = LoggerFactory.getLogger(AddStuff.class);
+
+    @Activate
+    public void activate() {
+        setApplyOnConfigurations("page");
+        setSkipOnConfiguration("include,wrapper");
+        setApplyOnModes("live,preview");
+        setPriority(-1f);
+    }
 
     @Override
     public String execute(String previousOut, RenderContext renderContext, Resource resource, RenderChain chain) throws Exception {
