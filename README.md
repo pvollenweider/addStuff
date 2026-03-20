@@ -1,5 +1,9 @@
 # AddStuff
-> A Jahia module that allow to inject HTML code in the HEAD or BODY part.
+> A Jahia module that allows injecting HTML code into the HEAD or BODY of any page.
+
+## Requirements
+
+- Jahia 8.0 or higher
 
 ## Installation
 
@@ -7,85 +11,78 @@ Please read the dedicated tutorial on https://academy.jahia.com/training-kb/tuto
 
 ## Usage
 
-The idea of this module is to allow any editor to inject some code in the HEAD or the BODY part of a page, without doing anything to your template set or any existing modules.
-As an example, you can add a JavaScript snippet on the bottom of the BODY, or some CSS inline style in the HEAD section.
+AddStuff allows editors to inject custom HTML (CSS, JavaScript, tracking scripts, etc.) at four specific locations in a page, without modifying any template or existing module.
 
-There is 4 different placeholders to inject your code:
+> **Note:** The injected code is only visible in **preview** or **live** mode. Nothing will appear in edit mode — this is by design, as the module works as a render filter applied at page rendering time.
 
-- Top of the HEAD
-- End of the HEAD
-- Top of the BODY
-- End of the BODY
-
-In term of HTML, here are the different placeholders:
+There are 4 injection points:
 
 ```html
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Top of the HEAD -->
+    <!-- Top of the HEAD — injected right after <head> -->
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello, world!</title>
-
-    <!-- Some CSS or JavaScript comming from the template:addResource tag -->
     <link href="/modules/anyModule/css/mystyle.css" rel="stylesheet">
     <script src="/modules/anyModule/javascript/my.js"></script>
 
-    <!-- End of the HEAD -->
+    <!-- End of the HEAD — injected right before </head> -->
   </head>
   <body>
-     <!-- Top of the BODY -->
-     <h1>Hello, world!</h1>
-     <p>Some content here...</p>
+    <!-- Top of the BODY — injected right after <body> -->
 
-     
-     <!-- End of the BODY -->
+    <h1>Hello, world!</h1>
+    <p>Some content here...</p>
+
+    <!-- End of the BODY — injected right before </body> -->
   </body>
 </html>
 ```
 
-You can do it using two different ways, the global (site) way or the single page way.
+### Scope: site-wide vs single page
 
-### The global (site) way
+You can configure AddStuff at two levels. Both can be active at the same time — site-level content is injected first, then page-level content is appended at the same location.
 
-You will choose the **global way** if you need to **inject some code on all pages of your site**.
+#### Site-wide (all pages)
 
-On Edit mode, on the left panel, you need to right-click on your site node and choose the `edit` action.
+Choose this if you need to inject code on **every page of your site** (e.g. a global analytics script).
 
-Then, under the `option` part, you will need to enable the `Add stuff in your HTML code (only for preview/live mode)`. Once it’s done, you will see the 4 placeholders.
+In edit mode, right-click your site node in the left panel and choose `Edit`. Under the `Options` tab, enable `Add stuff in your HTML code (only for preview/live mode)` to reveal the 4 fields. Fill in the relevant fields and save.
 
-You can insert your code in the chosen part, then save it.
+> The site node is auto-published — no publication workflow is needed.
 
-As the site node is an auto-published node, you don’t need to start a public workflow. 
+#### Single page
 
-### The page way
+Choose this if you need to inject code **on one specific page only**.
 
-If you need to inject some code **only on a single page**, you can edit your page node from the left panel and enable the `Add stuff in your HTML code (only for preview/live mode)` in the `option` part. Once it’s done, you will see the 4 placeholders. You can insert your code in the chosen part, then save it.
+In edit mode, right-click the page node in the left panel and choose `Edit`. Under the `Options` tab, enable `Add stuff in your HTML code (only for preview/live mode)` to reveal the 4 fields. Fill in the relevant fields and save.
 
-On the page way, you can preview this page to see the result (the code is only injected in preview or live mode), and you will need to start a publication workflow to view the result on live mode.
+> Page changes require a publication workflow to appear in live mode. You can use preview mode to verify the result first.
 
 ## Examples
 
 ### CSS injection
 
-If you need to inject some inline CSS classes on all pages, you can choose the global way, then enable the option and insert your code at the `End of the HEAD section`, so this code will override all your CSS assets coming from your existing modules or template set.
+To override existing styles on all pages, use the **End of the HEAD** field at site level (so your rules load after existing stylesheets):
 
-```css
+```html
+<style>
 .header {
     background-color: #e9e9e9;
-    padding: 10px; 
+    padding: 10px;
 }
+</style>
 ```
-If you only need to insert some CSS on a single page, then you will need to do it on the page node instead of the site node.
 
-### JavaScript injection
+### JavaScript injection — Google Tag Manager
 
-For many reasons, you may want to inject some JavaScript into a page. This can be done at many places, on the HEAD or on the BODY part. 
+GTM requires code in two locations. At site level, fill in:
 
-For instance, if you want to integrate a Google Tag Manager, you will need to add code on two different parts. The first part  should be added **as high in the <head> of the page as possible**, so you will choose the `Top of the HEAD section`
-```javascript
+**Top of the HEAD:**
+```html
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -94,9 +91,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-123456');</script>
 <!-- End Google Tag Manager -->
 ```
-And Additionally, you will need to paste some code **immediately after the opening <body> tag**, so you will choose the
-`Top of the BODY section`
-```javascript
+
+**Top of the BODY:**
+```html
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-123456"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

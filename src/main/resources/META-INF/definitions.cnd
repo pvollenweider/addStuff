@@ -1,4 +1,8 @@
 <jmix = 'http://www.jahia.org/jahia/mix/1.0'>
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+<mix = 'http://www.jcp.org/jcr/mix/1.0'>
+
+[jnt:addStuffSiteSettings] > jnt:content, mix:title, jmix:studioOnly, jmix:siteComponent
 
 [jmix:addStuff] mixin
  extends = jnt:virtualsite,jnt:page

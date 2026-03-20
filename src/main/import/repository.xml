@@ -7,15 +7,36 @@
                 j:title="addStuff"
                 jcr:mixinTypes="jmix:hasExternalProviderExtension"
                 jcr:primaryType="jnt:module">
-                
+
                 <portlets jcr:primaryType="jnt:portletFolder"/>
                 <files jcr:primaryType="jnt:folder"/>
                 <contents jcr:primaryType="jnt:contentFolder"/>
                 <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
                     <files jcr:primaryType="jnt:folder"/>
                     <contents jcr:primaryType="jnt:contentFolder"/>
+                    <site-settings-base j:view="siteSettings"
+                                        jcr:mixinTypes="jmix:useUILocale"
+                                        jcr:primaryType="jnt:template">
+                        <addStuff j:applyOn="jnt:virtualsite"
+                                  j:defaultTemplate="false"
+                                  j:hiddenTemplate="true"
+                                  j:priority="100"
+                                  j:requiredPermissionNames="siteAdminAddStuff"
+                                  j:titleKey="addstuff.siteSettings.title"
+                                  jcr:mixinTypes="jmix:rbTitle"
+                                  jcr:primaryType="jnt:contentTemplate">
+                            <pagecontent jcr:primaryType="jnt:contentList">
+                                <addStuffSiteSettings jcr:primaryType="jnt:addStuffSiteSettings">
+                                    <j:translation_en jcr:language="en"
+                                                      jcr:mixinTypes="mix:title"
+                                                      jcr:primaryType="jnt:translation"
+                                                      jcr:title="Add Stuff"/>
+                                </addStuffSiteSettings>
+                            </pagecontent>
+                        </addStuff>
+                    </site-settings-base>
                 </templates>
-                
+
             </addstuff>
     </modules>
 </content>
