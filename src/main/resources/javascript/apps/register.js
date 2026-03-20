@@ -36,13 +36,12 @@
         };
     }
 
-    /** Minimal React element factory — no React import needed. */
-    function h(type, props, key, ref) {
+    function el(type, props) {
         return {
             $$typeof: REACT_ELEMENT,
             type: type,
-            key: key !== undefined ? String(key) : null,
-            ref: ref || null,
+            key: null,
+            ref: null,
             props: props || {},
             _owner: null,
             _store: {}
@@ -52,19 +51,17 @@
     /**
      * CodeMirror selectorType component.
      * API matches Jahia content-editor selectorType convention: { field, id, value, onChange }
-     * - field:    content editor field definition (field.selectorOptions for future extensibility)
-     * - id:       HTML id for the editor container
-     * - value:    current field value
-     * - onChange: callback(newValue) to propagate changes to content editor
+     *
+     * Uses setTimeout(0) to initialise CodeMirror after React has flushed the div
+     * to the DOM — more reliable than ref callbacks on manually-crafted React elements.
      */
     function CodeMirrorAddStuffCmp(props) {
         var value = props.value || '';
         var onChange = props.onChange;
-        var id = props.id || 'cm';
+        var containerId = 'addstuff-cm-' + (props.id || 'field');
 
-        return h('div', {
-            style: {border: '1px solid #ddd', borderRadius: '3px'}
-        }, id, function (domEl) {
+        setTimeout(function () {
+            var domEl = document.getElementById(containerId);
             if (!domEl) {
                 return;
             }
@@ -99,6 +96,11 @@
                 domEl._cm.setValue(value);
                 domEl._cmValue = value;
             }
+        }, 0);
+
+        return el('div', {
+            id: containerId,
+            style: {border: '1px solid #ddd', borderRadius: '3px'}
         });
     }
 
@@ -135,7 +137,7 @@
     i18nReady.then(function () {
         window.jahia.uiExtender.registry.add('adminRoute', 'addStuffSiteSettings', {
             targets: ['administration-sites:100'],
-            requiredPermission: 'siteAdminUsers',
+            requiredPermission: 'siteAdminAddStuff',
             label: 'addstuff:addstuff.siteSettings.title',
             icon: moonIcon(window.jahia.moonstone.Code),
             isSelectable: true,
