@@ -1,3 +1,7 @@
 {
-    "addstuff.siteSettings.title": "Add Stuff"
+    "addstuff": {
+        "siteSettings": {
+            "title": "Add Stuff"
+        }
+    }
 }

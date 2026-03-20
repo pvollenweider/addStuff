@@ -46,11 +46,19 @@ There are 4 injection points:
 
 You can configure AddStuff at two levels. Both can be active at the same time — site-level content is injected first, then page-level content is appended at the same location.
 
-#### Site-wide (all pages)
+#### Site-wide (all pages) — Site Settings panel
 
-Choose this if you need to inject code on **every page of your site** (e.g. a global analytics script).
+The easiest way to manage site-wide code snippets is through the dedicated **Add Stuff** panel in jContent's site administration.
 
-In edit mode, right-click your site node in the left panel and choose `Edit`. Under the `Options` tab, enable `Add stuff in your HTML code (only for preview/live mode)` to reveal the 4 fields. Fill in the relevant fields and save.
+**Required permission:** `Site Administrator` (the `siteAdminUsers` permission). Standard site editors do not have access to this panel.
+
+Navigate to **Administration → Sites → [your site] → Add Stuff**. The panel shows four code editors — one per injection point — with syntax highlighting:
+
+![Add Stuff site settings panel](doc/images/site-settings.png)
+
+Fill in the relevant fields and click **Save**. Changes apply immediately in preview and live modes without any publication workflow.
+
+Alternatively, in edit mode you can right-click the site node in the left panel and choose `Edit`. Under the `Options` tab, enable `Add stuff in your HTML code (only for preview/live mode)` to reveal the 4 fields.
 
 > The site node is auto-published — no publication workflow is needed.
 
