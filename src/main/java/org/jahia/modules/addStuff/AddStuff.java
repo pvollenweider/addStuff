@@ -15,10 +15,8 @@ import org.jahia.services.render.filter.RenderChain;
 import org.jahia.services.render.filter.cache.AggregateCacheFilter;
 import org.slf4j.*;
 import org.slf4j.Logger;
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationListener;
 
-public class AddStuff extends AbstractFilter implements ApplicationListener<ApplicationEvent> {
+public class AddStuff extends AbstractFilter {
 
     private static Logger logger = LoggerFactory.getLogger(AddStuff.class);
 
@@ -86,7 +84,5 @@ public class AddStuff extends AbstractFilter implements ApplicationListener<Appl
         return out;
     }
 
-    public void onApplicationEvent(ApplicationEvent event) {
-    }
 }
 
